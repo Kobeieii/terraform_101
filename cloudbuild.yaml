@@ -1,0 +1,39 @@
+steps:
+  # Step 1: Initialize Terraform
+  - id: "terraform-init"
+    name: "hashicorp/terraform:latest"
+    entrypoint: "sh"
+    args:
+      - "-c"
+      - |
+        terraform init
+
+  # Step 2: Validate Terraform configuration
+  - id: "terraform-validate"
+    name: "hashicorp/terraform:latest"
+    entrypoint: "sh"
+    args:
+      - "-c"
+      - |
+        terraform validate
+
+  # Step 3: Plan Terraform changes
+  - id: "terraform-plan"
+    name: "hashicorp/terraform:latest"
+    entrypoint: "sh"
+    args:
+      - "-c"
+      - |
+        terraform plan -out=tfplan
+
+  # Step 4: Apply Terraform changes
+  - id: "terraform-apply"
+    name: "hashicorp/terraform:latest"
+    entrypoint: "sh"
+    args:
+      - "-c"
+      - |
+        terraform apply -auto-approve tfplan
+
+options:
+  logging: CLOUD_LOGGING_ONLY
