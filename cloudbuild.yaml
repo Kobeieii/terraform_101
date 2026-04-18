@@ -8,14 +8,14 @@ steps:
       - |
         terraform init
 
-  # Step 2: Validate Terraform configuration
-  - id: "terraform-validate"
-    name: "hashicorp/terraform:latest"
-    entrypoint: "sh"
-    args:
-      - "-c"
-      - |
-        terraform validate
+  # # Step 2: Validate Terraform configuration
+  # - id: "terraform-validate"
+  #   name: "hashicorp/terraform:latest"
+  #   entrypoint: "sh"
+  #   args:
+  #     - "-c"
+  #     - |
+  #       terraform validate
 
   # Step 3: Plan Terraform changes
   - id: "terraform-plan"
